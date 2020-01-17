@@ -17,10 +17,14 @@ if interval:
     while(True):
         start = time.time()
         txt = ""
-        for each in v.devices["controller_1"].get_pose_euler():
-            txt += "%.4f" % each
-            txt += " "
-        print("\r" + txt, end="")
+
+        data = v.devices["controller_1"].get_pose_euler()
+
+        if data is not None:
+            for each in data:
+                txt += "%.4f" % each
+                txt += " "
+            print("\r" + txt, end="")
         sleep_time = interval-(time.time()-start)
         if sleep_time>0:
             time.sleep(sleep_time)

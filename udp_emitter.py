@@ -22,7 +22,7 @@ if interval:
     while(True):
         start = time.time()
         txt = ""
-        data =  v.devices["tracker_1"].get_pose_quaternion()
+        data =  v.devices["controller_1"].get_pose_quaternion()
         sent = sock.sendto(struct.pack('d'*len(data), *data), server_address)
         print("\r" + txt, end="")
         sleep_time = interval-(time.time()-start)
